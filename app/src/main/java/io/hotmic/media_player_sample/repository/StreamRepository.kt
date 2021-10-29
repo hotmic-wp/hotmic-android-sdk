@@ -1,6 +1,7 @@
 package io.hotmic.media_player_sample.repository
 
 import android.content.Context
+import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -23,10 +24,10 @@ class StreamRepository(private val context: Context) {
 
         HotMicPlayer.getStreams(context, API_KEY)?.let { api ->
             api.subscribeOn(Schedulers.io()).subscribe({ sList ->
-                Toast.makeText(context, "${sList.size} streams are fetched.", Toast.LENGTH_SHORT).show()
+                Log.d("HotMic", "${sList.size} streams are fetched.")
                 streamListLiveData.postValue(sList)
             }, { e ->
-                Toast.makeText(context, "Fetching stream error occurred: $e", Toast.LENGTH_SHORT).show()
+                Log.d("HotMic", "Fetching stream error occurred: $e")
             })
         }
     }
