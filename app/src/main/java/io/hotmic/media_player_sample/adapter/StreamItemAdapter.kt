@@ -12,7 +12,7 @@ import io.hotmic.player.models.HMStreamBasic
 import java.text.SimpleDateFormat
 
 class StreamItemAdapter(
-    private val dataSet: List<HMStreamBasic>,
+    private val dataSet: ArrayList<HMStreamBasic>,
     private val listener: EventListener
 ) :
     RecyclerView.Adapter<StreamItemAdapter.ViewHolder>() {
@@ -47,6 +47,11 @@ class StreamItemAdapter(
         holder.clContainer.setOnClickListener {
             listener.onItemClicked(dataSet[position])
         }
+    }
+
+    fun updateList(newDataSet: List<HMStreamBasic>) {
+        dataSet.clear()
+        dataSet.addAll(newDataSet)
     }
 
     override fun getItemCount() = dataSet.size

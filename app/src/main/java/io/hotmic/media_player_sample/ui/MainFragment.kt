@@ -5,9 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import io.hotmic.media_player_sample.MainActivity
 import io.hotmic.media_player_sample.R
 import io.hotmic.media_player_sample.adapter.StreamItemAdapter
 import io.hotmic.media_player_sample.databinding.FragmentMainBinding
@@ -45,14 +45,34 @@ class MainFragment : Fragment(), StreamItemAdapter.EventListener {
 
         // Observe stream list
         streamViewModel.getStreamListLiveData().observe(viewLifecycleOwner, { streamList ->
-            streamListAdapter = StreamItemAdapter(streamList, this)
+
+            if (streamListAdapter == null) {
+                streamListAdapter = StreamItemAdapter(ArrayList(streamList), this)
+            } else {
+                streamListAdapter?.let {
+                    it.updateList(streamList)
+                    it.notifyDataSetChanged()
+                }
+            }
             binding.rvStreamList.adapter = streamListAdapter
             binding.pbDataLoading.visibility = View.GONE
         })
+    }
+
+    override fun onResume() {
+        super.onResume()
         streamViewModel.retrieveStreamList()
     }
 
-    override fun onItemClicked(data: HMStreamBasic) {
-        Toast.makeText(context, "Clicked Id: ${data.id}", Toast.LENGTH_SHORT).show()
+    override fun onDestroy() {
+        streamListAdapter = null
+        super.onDestroy()
+    }
+
+    override fun onItemClicked(stream: HMStreamBasic) {
+        activity?.let {
+            val mActivity = activity as MainActivity
+            mActivity.onStreamClicked(stream)
+        }
     }
 }
