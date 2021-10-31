@@ -47,11 +47,20 @@ class MainActivity : AppCompatActivity() {
     override fun onBackPressed() {
         if (HotMicPlayer.isPlayerOpen(this)) {
             HotMicPlayer.closePlayer(this, ANVideoCloseReason.USER_CLOSED)
-            binding.fcvMainContainer.visibility = View.VISIBLE
-            binding.playerFragmentContainer.visibility = View.GONE
+            showStreamListScreen()
         } else {
             super.onBackPressed()
         }
+    }
+
+    private fun showStreamListScreen() {
+        binding.fcvMainContainer.visibility = View.VISIBLE
+        binding.playerFragmentContainer.visibility = View.GONE
+    }
+
+    private fun showPlayerScreen() {
+        binding.fcvMainContainer.visibility = View.GONE
+        binding.playerFragmentContainer.visibility = View.VISIBLE
     }
 
     fun onStreamClicked(stream: HMStreamBasic) {
@@ -142,8 +151,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        binding.fcvMainContainer.visibility = View.GONE
-        binding.playerFragmentContainer.visibility = View.VISIBLE
+        showPlayerScreen()
         HotMicPlayer.Builder(this).setStreamId(stream.id).setUICallback(callback)
             .credential(Credentials.API_KEY).show(R.id.player_fragment_container)
     }
