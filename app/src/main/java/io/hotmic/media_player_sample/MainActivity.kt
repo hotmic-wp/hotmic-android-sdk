@@ -4,7 +4,6 @@ import android.app.Activity
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.add
@@ -23,10 +22,9 @@ import io.hotmic.player.models.HMUserBasic
 import io.reactivex.BackpressureStrategy
 import io.reactivex.Flowable
 import io.reactivex.Observable
+import timber.log.Timber
 
 class MainActivity : AppCompatActivity() {
-
-    private val TAG = this.javaClass.simpleName
 
     private lateinit var binding: ActivityMainBinding
 
@@ -70,15 +68,15 @@ class MainActivity : AppCompatActivity() {
                 get() = TODO("Not yet implemented")
 
             override fun closeOpenPanels() {
-                Log.d(TAG, "Close Open Panels")
+                Timber.d("closeOpenPanels")
             }
 
             override fun closePlayer(reason: ANVideoCloseReason, message: String?) {
-                Log.d(TAG, "closePlayer")
+                Timber.d("closePlayer")
             }
 
             override fun fetchSkuDetails(skuId: String?): Flowable<List<AppSku>> {
-                Log.d(TAG, "fetchSkuDetails")
+                Timber.d("fetchSkuDetails")
                 return Flowable.create({
                 }, BackpressureStrategy.BUFFER)
             }
@@ -87,36 +85,36 @@ class MainActivity : AppCompatActivity() {
                 user: HMUserBasic,
                 shouldFollow: Boolean
             ): Observable<Unit> {
-                Log.d(TAG, "followUser")
+                Timber.d("followUser")
                 return Observable.create {
                 }
             }
 
             override fun getPlatformToken(): String {
-                Log.d(TAG, "getPlatformToken")
+                Timber.d("getPlatformToken")
                 return Credentials.PLATFORM_TOKEN
             }
 
             override fun getShareLink(context: Context, streamId: String): Observable<String> {
-                Log.d(TAG, "getShareLink")
+                Timber.d("getShareLink")
                 return Observable.create {
                 }
             }
 
             override fun getUserFollowObservable(): Observable<Unit> {
-                Log.d(TAG, "getUserFollowObservable")
+                Timber.d("getUserFollowObservable")
                 return Observable.create {
                 }
             }
 
             override fun isBlockedByHost(hostId: String): Observable<Boolean>? {
-                Log.d(TAG, "isBlockedByHost")
+                Timber.d("isBlockedByHost")
                 return Observable.create {
                 }
             }
 
             override fun isFollowing(uid: String): Boolean {
-                Log.d(TAG, "isFollowing")
+                Timber.d("isFollowing")
                 return stream.user.isFollowingMe
             }
 
@@ -128,7 +126,7 @@ class MainActivity : AppCompatActivity() {
                 streamType: String,
                 appSkuDetail: AppSku
             ): Observable<AppBillingResult> {
-                Log.d(TAG, "makeJoinGuestPurchase")
+                Timber.d("makeJoinGuestPurchase")
                 return Observable.create {
                 }
             }
@@ -143,11 +141,11 @@ class MainActivity : AppCompatActivity() {
                 anonymous: Boolean,
                 appSkuDetail: AppSku
             ) {
-                Log.d(TAG, "makeTipPurchase")
+                Timber.d("makeTipPurchase")
             }
 
             override fun onAdClick(streamId: String, adId: String) {
-                Log.d(TAG, "onAdClick")
+                Timber.d("onAdClick")
             }
         }
 
