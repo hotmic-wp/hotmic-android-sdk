@@ -5,10 +5,13 @@ import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.add
 import androidx.fragment.app.commit
 import androidx.lifecycle.LiveData
 import io.hotmic.media_player_sample.data.Credentials
+import io.hotmic.media_player_sample.databinding.ActivityMainBinding
 import io.hotmic.media_player_sample.ui.MainFragment
 import io.hotmic.player.HotMicPlayer
 import io.hotmic.player.analytics.ANVideoCloseReason
@@ -25,11 +28,13 @@ class MainActivity : AppCompatActivity() {
 
     private val TAG = this.javaClass.simpleName
 
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-        title = applicationContext.getString(R.string.title)
+        supportActionBar?.hide()
 
         if (savedInstanceState == null) {
             supportFragmentManager.commit {
@@ -42,6 +47,8 @@ class MainActivity : AppCompatActivity() {
     override fun onBackPressed() {
         if (HotMicPlayer.isPlayerOpen(this)) {
             HotMicPlayer.closePlayer(this, ANVideoCloseReason.USER_CLOSED)
+            binding.fcvMainContainer.visibility = View.VISIBLE
+            binding.playerFragmentContainer.visibility = View.GONE
         } else {
             super.onBackPressed()
         }
@@ -134,6 +141,9 @@ class MainActivity : AppCompatActivity() {
                 Log.d(TAG, "onAdClick")
             }
         }
+
+        binding.fcvMainContainer.visibility = View.GONE
+        binding.playerFragmentContainer.visibility = View.VISIBLE
         HotMicPlayer.Builder(this).setStreamId(stream.id).setUICallback(callback)
             .credential(Credentials.API_KEY).show(R.id.player_fragment_container)
     }
