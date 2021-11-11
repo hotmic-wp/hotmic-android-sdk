@@ -1,15 +1,17 @@
 package io.hotmic.media_player_sample.repository
 
 import android.content.Context
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import io.hotmic.media_player_sample.data.Credentials
 import io.hotmic.player.HotMicPlayer
 import io.hotmic.player.models.HMStreamBasic
 import io.reactivex.schedulers.Schedulers
-import timber.log.Timber
 
 class StreamRepository(private val context: Context) {
+
+    private val TAG = this.javaClass.simpleName.toString()
 
     // Live Data
     private var streamListLiveData = MutableLiveData<List<HMStreamBasic>>()
@@ -22,10 +24,10 @@ class StreamRepository(private val context: Context) {
 
         HotMicPlayer.getStreams(context, Credentials.API_KEY)?.let { api ->
             api.subscribeOn(Schedulers.io()).subscribe({ sList ->
-                Timber.d("${sList.size} streams are fetched.")
+                Log.d(TAG,"${sList.size} streams are fetched.")
                 streamListLiveData.postValue(sList)
             }, { e ->
-                Timber.d("Fetching stream error occurred: $e")
+                Log.d(TAG,"Fetching stream error occurred: $e")
             })
         }
     }

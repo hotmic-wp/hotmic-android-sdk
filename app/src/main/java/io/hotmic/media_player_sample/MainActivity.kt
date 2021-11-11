@@ -4,11 +4,11 @@ import android.app.Activity
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.add
 import androidx.fragment.app.commit
-import androidx.lifecycle.LiveData
 import io.hotmic.media_player_sample.data.Credentials
 import io.hotmic.media_player_sample.databinding.ActivityMainBinding
 import io.hotmic.media_player_sample.ui.MainFragment
@@ -18,14 +18,13 @@ import io.hotmic.player.main.PlayerCallbacks
 import io.hotmic.player.models.AppBillingResult
 import io.hotmic.player.models.AppSku
 import io.hotmic.player.models.HMStreamBasic
-import io.hotmic.player.models.HMUserBasic
 import io.reactivex.BackpressureStrategy
 import io.reactivex.Flowable
 import io.reactivex.Observable
-import timber.log.Timber
 
 class MainActivity : AppCompatActivity() {
 
+    private val TAG = this.javaClass.simpleName.toString()
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,6 +42,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
+        Log.d(TAG,"onBackPressed()")
         if (HotMicPlayer.isPlayerOpen(this)) {
             HotMicPlayer.closePlayer(this, ANVideoCloseReason.USER_CLOSED)
             showStreamListScreen()
@@ -64,57 +64,32 @@ class MainActivity : AppCompatActivity() {
     fun onStreamClicked(stream: HMStreamBasic) {
 
         var callback = object : PlayerCallbacks {
-            override val tipSkus: LiveData<List<AppSku>>
-                get() = TODO("Not yet implemented")
-
-            override fun closeOpenPanels() {
-                Timber.d("closeOpenPanels")
-            }
-
-            override fun closePlayer(reason: ANVideoCloseReason, message: String?) {
-                Timber.d("closePlayer")
-            }
 
             override fun fetchSkuDetails(skuId: String?): Flowable<List<AppSku>> {
-                Timber.d("fetchSkuDetails")
+                Log.d(TAG,"fetchSkuDetails()")
                 return Flowable.create({
                 }, BackpressureStrategy.BUFFER)
             }
 
-            override fun followUser(
-                user: HMUserBasic,
-                shouldFollow: Boolean
-            ): Observable<Unit> {
-                Timber.d("followUser")
-                return Observable.create {
-                }
-            }
-
             override fun getPlatformToken(): String {
-                Timber.d("getPlatformToken")
+                Log.d(TAG,"getPlatformToken()")
                 return Credentials.PLATFORM_TOKEN
             }
 
             override fun getShareLink(context: Context, streamId: String): Observable<String> {
-                Timber.d("getShareLink")
-                return Observable.create {
-                }
-            }
-
-            override fun getUserFollowObservable(): Observable<Unit> {
-                Timber.d("getUserFollowObservable")
+                Log.d(TAG,"getShareLink()")
                 return Observable.create {
                 }
             }
 
             override fun isBlockedByHost(hostId: String): Observable<Boolean>? {
-                Timber.d("isBlockedByHost")
+                Log.d(TAG,"isBlockedByHost()")
                 return Observable.create {
                 }
             }
 
             override fun isFollowing(uid: String): Boolean {
-                Timber.d("isFollowing")
+                Log.d(TAG,"isFollowing()")
                 return stream.user.isFollowingMe
             }
 
@@ -126,7 +101,7 @@ class MainActivity : AppCompatActivity() {
                 streamType: String,
                 appSkuDetail: AppSku
             ): Observable<AppBillingResult> {
-                Timber.d("makeJoinGuestPurchase")
+                Log.d(TAG,"makeJoinGuestPurchase()")
                 return Observable.create {
                 }
             }
@@ -141,11 +116,11 @@ class MainActivity : AppCompatActivity() {
                 anonymous: Boolean,
                 appSkuDetail: AppSku
             ) {
-                Timber.d("makeTipPurchase")
+                Log.d(TAG,"makeTipPurchase()")
             }
 
             override fun onAdClick(streamId: String, adId: String) {
-                Timber.d("onAdClick")
+                Log.d(TAG,"onAdClick()")
             }
         }
 
