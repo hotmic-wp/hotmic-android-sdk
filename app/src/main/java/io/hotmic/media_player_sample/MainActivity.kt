@@ -1,11 +1,9 @@
 package io.hotmic.media_player_sample
 
-import android.app.Activity
-import android.content.Context
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.add
 import androidx.fragment.app.commit
@@ -15,12 +13,7 @@ import io.hotmic.media_player_sample.ui.MainFragment
 import io.hotmic.player.HotMicPlayer
 import io.hotmic.player.analytics.ANVideoCloseReason
 import io.hotmic.player.main.PlayerCallbacks
-import io.hotmic.player.models.AppBillingResult
-import io.hotmic.player.models.AppSku
 import io.hotmic.player.models.HMStreamBasic
-import io.reactivex.BackpressureStrategy
-import io.reactivex.Flowable
-import io.reactivex.Observable
 
 class MainActivity : AppCompatActivity() {
 
@@ -62,70 +55,22 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun onStreamClicked(stream: HMStreamBasic) {
+        showPlayerScreen()
+        HotMicPlayer.Builder(this)
+            .setStreamId(stream.id)
+            .setUICallback(playerCallback)
+            .credential(Credentials.API_KEY)
+            .show(R.id.player_fragment_container)
+    }
 
-        var callback = object : PlayerCallbacks {
+    private val playerCallback = object : PlayerCallbacks {
 
-            override fun fetchSkuDetails(skuId: String?): Flowable<List<AppSku>> {
-                Log.d(TAG,"fetchSkuDetails()")
-                return Flowable.create({
-                }, BackpressureStrategy.BUFFER)
-            }
-
-            override fun getPlatformToken(): String {
-                Log.d(TAG,"getPlatformToken()")
-                return Credentials.PLATFORM_TOKEN
-            }
-
-            override fun getShareLink(context: Context, streamId: String): Observable<String> {
-                Log.d(TAG,"getShareLink()")
-                return Observable.create {
-                }
-            }
-
-            override fun isBlockedByHost(hostId: String): Observable<Boolean>? {
-                Log.d(TAG,"isBlockedByHost()")
-                return Observable.create {
-                }
-            }
-
-            override fun isFollowing(uid: String): Boolean {
-                Log.d(TAG,"isFollowing()")
-                return stream.user.isFollowingMe
-            }
-
-            override fun makeJoinGuestPurchase(
-                activity: Activity,
-                userId: String,
-                hostId: String,
-                streamId: String,
-                streamType: String,
-                appSkuDetail: AppSku
-            ): Observable<AppBillingResult> {
-                Log.d(TAG,"makeJoinGuestPurchase()")
-                return Observable.create {
-                }
-            }
-
-            override fun makeTipPurchase(
-                activity: Activity,
-                userId: String,
-                hostId: String,
-                streamId: String,
-                streamType: String,
-                message: String,
-                anonymous: Boolean,
-                appSkuDetail: AppSku
-            ) {
-                Log.d(TAG,"makeTipPurchase()")
-            }
-
-            override fun onAdClick(streamId: String, adId: String) {
-                Log.d(TAG,"onAdClick()")
-            }
+        override fun getPlatformToken(): String {
+            return Credentials.PLATFORM_TOKEN
         }
 
-        showPlayerScreen()
-        HotMicPlayer.Builder(this).setStreamId(stream.id).setUICallback(callback)
-            .credential(Credentials.API_KEY).show(R.id.player_fragment_container)
+        override fun onPlayerClosed() {
+            showStreamListScreen()
+        }
     }
 }

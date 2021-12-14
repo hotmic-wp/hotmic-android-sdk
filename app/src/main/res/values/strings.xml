@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">HotMicMediaPlayerSample</string>
+    <string name="app_name">HotMic Player Sample</string>
     <string name="title">HotMic Media Player Sample</string>
     <string name="at">at</string>
     <string name="onTheMic">On the mic</string>
