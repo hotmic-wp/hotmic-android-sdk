@@ -11,8 +11,8 @@ android {
         applicationId "io.hotmic.media_player_sample"
         minSdk 21
         targetSdk 30
-        versionCode 1
-        versionName "1.0"
+        versionCode 3
+        versionName "1.1"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -50,5 +50,5 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
 
     //HotMic Player SDK
-    implementation 'io.hotmic.player:hotmic-android-sdk:1.1.0'
+    implementation 'io.hotmic.player:hotmic-android-sdk:1.2.0'
 }
