@@ -1,11 +1,11 @@
 package io.hotmic.media_player_sample.ui
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import io.hotmic.media_player_sample.MainActivity
 import io.hotmic.media_player_sample.R
@@ -43,8 +43,14 @@ class MainFragment : Fragment(), StreamItemAdapter.EventListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.swipeLayout.isRefreshing = true
+        binding.swipeLayout.setOnRefreshListener {
+            refreshStreams()
+        }
+
         // Observe stream list
         streamViewModel.getStreamListLiveData().observe(viewLifecycleOwner, { streamList ->
+            binding.swipeLayout.isRefreshing = false
 
             if (streamListAdapter == null) {
                 streamListAdapter = StreamItemAdapter(ArrayList(streamList), this)
@@ -55,12 +61,16 @@ class MainFragment : Fragment(), StreamItemAdapter.EventListener {
                 }
             }
             binding.rvStreamList.adapter = streamListAdapter
-            binding.pbDataLoading.visibility = View.GONE
         })
     }
 
     override fun onResume() {
         super.onResume()
+        refreshStreams()
+    }
+
+    private fun refreshStreams() {
+        binding.swipeLayout.isRefreshing = true
         streamViewModel.retrieveStreamList()
     }
 
