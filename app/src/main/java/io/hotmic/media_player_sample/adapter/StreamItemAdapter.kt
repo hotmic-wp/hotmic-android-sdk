@@ -19,9 +19,6 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop
 
 import com.bumptech.glide.request.RequestOptions
 
-
-
-
 class StreamItemAdapter(
     private val dataSet: ArrayList<HMStreamBasic>,
     private val listener: EventListener
@@ -72,10 +69,10 @@ class StreamItemAdapter(
             }
 
             holder.tvState.text = stream.state.name
-            holder.hostName.text = stream.user.name
+            holder.hostName.text = stream.user?.name ?: ""
 
             Glide.with(holder.hostAvatar.context)
-                .load(stream.user.profilePic)
+                .load(stream.user?.profilePic ?: "")
                 .circleCrop()
                 .into(holder.hostAvatar)
         }

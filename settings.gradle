@@ -5,10 +5,10 @@ dependencyResolutionManagement {
         mavenCentral()
         maven { url 'https://jitpack.io' }
         maven {
-            url "https://hotmic-android-803561570732.d.codeartifact.us-west-2.amazonaws.com/maven/HotMicAndroidSDK/"
+            url "https://maven.pkg.github.com/hotmic-wp/android-sdk"
             credentials {
-                username 'aws'
-                password 'eyJ2ZXIiOjEsImlzdSI6MTYzOTUwMTcxOSwiZW5jIjoiQTEyOEdDTSIsInRhZyI6InlFU25HWWZLNGticDZubXg1RFRYZVEiLCJleHAiOjE2Mzk1NDQ5MTksImFsZyI6IkExMjhHQ01LVyIsIml2IjoiQjV3c2U3cDRrZkRRRUQzSCJ9.UaXa7Hb4-QfPpLPVrtt4JA.8BaoOVK-p_njcLsj.PasBcioS0O8DFcA_AicV5v-pd0NB0yM2-rxVjDyeQCYpR4sS_UqE7H0I2IViSFVW9OP2oa4LpACWO1pLuOFMXv612pV2POUC4PGPh1LTgX0FD4rcIufEva0BeAaFPsYqtXT3v9Rtvd5r0HHXajkkEvhxWOyMYS2qBBSHImNEbr7mYss3gw3h1skyqWAmoUTF-iM5lkXB58DJ9DQlGb40N7hqBIsEEUGMdRXzy9ZB83ZbOdbE2Cu7r9OeSFLEMDOYfL98RwfFp50tsrbIlpRM3Y3RxSefpNLuWpyzfMqehzNpXRJqGjBxlGJwDIKZT2BEhxtfYcdKLIJjsfEM2cmPUj-mbe-LT-QRz240GpP5g8L-nnMxVyPzQbgynlzjVZZ5XCbTux6u5j1GVjNoAe8a_4-IWMme1QZV2zxYrXNFSPSlEoLoxn4RjoDfolybwEy1Ie7o-kxajT_NCE4FQgNxznZoGkJQARUDJenyheIwO12yY_PJYCNXuBeRuhb2ykxdNZOMoE-1eSt6SRsLU30t541_RqSno290nhHRoiyy-ymThQvShV3rZ4qyiP3oPNZQPstanwt52XBChWnXVzrnBuz1GBsUv1FjSsQyrovBHcp-Z4YFi_acTooVGyM4ih_yamCjJAXemuKDFvqd756pvwp2t704PlOeLA2PboxoXCr2S0imBqAqVTqOPmv-GzEtPuI2kamq0WCRUrrWm3TzgFDnBdHg2PPqJhzaXiFHe79d7Wu_kU4WsIEVyW1Qq1FZDqRD2cSoRd_QRKqwnsoM4AYHN4Eqg43iq_faFcVMLOFT6VylA5JrRyC6v34QTEPGzQA23acsj_3OJZ4z_KprNXI8zLapKKcX0tnMMP_qrRWGrJjA-2yZfOOm-Y48tp0_-_8suj-4r90lD2MMR7e-YpcHg_z9BJrnT1jcDZ2DDNklRh206A.uxmry6T-sRBgZuTfjH3N8A'
+                username = "ksgangadharan"
+                password = "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"
             }
         }
     }
