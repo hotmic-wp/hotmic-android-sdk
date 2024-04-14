@@ -61,4 +61,15 @@ dependencies {
     //HotMic Player SDK
     implementation 'io.hotmic.player:hotmic-android-sdk:1.9.0-alpha4'
 
+    //For circular image view
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+    implementation 'androidx.emoji:emoji:1.1.0'
+    implementation 'androidx.emoji:emoji-appcompat:1.1.0'
+    implementation 'androidx.emoji:emoji-bundled:1.1.0'
+
+    implementation 'com.github.trevjonez:polyadapter-android:0.10.0'
+    implementation 'org.nibor.autolink:autolink:0.10.0'
+
+
 }

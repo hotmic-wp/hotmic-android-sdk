@@ -4,6 +4,6 @@ class Credentials {
 
     companion object {
         val API_KEY = "d34c0ae5-185b-4c3b-a55c-2d7ef9ebf5b6"
-        val PLATFORM_TOKEN = "<< TODO: JWT TOKEN >>"
+        val PLATFORM_TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6eyJ1c2VyX2lkIjoiM2MyZGU3M2UtNmRiNi00MTg5LWJmY2EtMmE3NGNkN2Y3NjQ0IiwiZGlzcGxheV9uYW1lIjoiR2FuZ2EiLCJwcm9maWxlX3BpYyI6Imh0dHBzOi8vaG90bWljLWNvbnRlbnQuczMtdXMtd2VzdC0xLmFtYXpvbmF3cy5jb20vcHJvZmlsZV9waWNzLzNjMmRlNzNlLTZkYjYtNDE4OS1iZmNhLTJhNzRjZDdmNzY0NF8yODEuanBlZyJ9LCJpYXQiOjE3MTMxMTc0NTEsImV4cCI6MTcxMzIwMzg1MX0.S1YOd4U6z9BAlKFV-_wNNsO0DoteVU3-DOtHbCVrYlI"
     }
 }

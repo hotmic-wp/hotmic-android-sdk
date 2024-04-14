@@ -7,8 +7,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.add
 import androidx.fragment.app.commit
+import io.hotmic.media_player_sample.chat.SampleChatFragment
 import io.hotmic.media_player_sample.data.Credentials
 import io.hotmic.media_player_sample.databinding.ActivityMainBinding
+import io.hotmic.media_player_sample.ui.AppPreferences
 import io.hotmic.media_player_sample.ui.MainFragment
 import io.hotmic.player.HotMicPlayer
 import io.hotmic.player.analytics.ANVideoCloseReason
@@ -56,11 +58,16 @@ class MainActivity : AppCompatActivity() {
 
     fun onStreamClicked(stream: HMStreamBasic) {
         showPlayerScreen()
-        HotMicPlayer.Builder(this)
+        val builder = HotMicPlayer.Builder(this)
             .setStreamId(stream.id)
             .setUICallback(playerCallback)
             .credential(Credentials.API_KEY)
-            .show(R.id.player_fragment_container)
+
+        if (AppPreferences.isCustomChatEnabled(applicationContext))
+            builder.setChatFragment(SampleChatFragment())
+
+        builder.show(R.id.player_fragment_container)
+
     }
 
     private val playerCallback = object : PlayerCallbacks {

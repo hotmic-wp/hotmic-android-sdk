@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="5dp">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profile_image"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="5dp"
+        app:civ_border_color="#FF7106"
+        app:civ_border_width="2dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@tools:sample/avatars"/>
+
+    <io.hotmic.media_player_sample.chat.ChatTextView
+        android:id="@+id/chat_text"
+        android:textAppearance="@style/TextAppearance.HMPlayerBody2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="20dp"
+        android:textColor="#86898C"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/profile_image"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="This is a text message to test how this chat looks. This is a text message to test how this chat looks. This is a text message to test how this chat looks. This is a text message to test how this chat looks. This is a text message to test how this chat looks"/>
+
+    <HorizontalScrollView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp"
+        android:scrollbars="none"
+        app:layout_constraintStart_toStartOf="@+id/chat_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/chat_text"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <io.hotmic.player.ui.ReactionView
+                android:id="@+id/reaction_like"
+                android:textAppearance="@style/TextAppearance.HMPlayerBody1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:textSize="12sp"
+                android:textColor="#303234"
+                tools:visibility="visible"
+                tools:text="\uD83D\uDC4D 1" />
+
+            <io.hotmic.player.ui.ReactionView
+                android:id="@+id/reaction_fire"
+                android:textAppearance="@style/TextAppearance.HMPlayerBody1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:textSize="12sp"
+                android:textColor="#303234"
+                tools:visibility="visible"
+                tools:text="\uD83D\uDC4D 2" />
+
+            <io.hotmic.player.ui.ReactionView
+                android:id="@+id/reaction_laugh"
+                android:textAppearance="@style/TextAppearance.HMPlayerBody1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:background="@drawable/sample_reaction_custom_bkg"
+                android:textSize="12sp"
+                android:textColor="#303234"
+                tools:visibility="visible"
+                tools:text="\uD83D\uDC4D 2" />
+
+            <io.hotmic.player.ui.ReactionView
+                android:id="@+id/reaction_anger"
+                android:textAppearance="@style/TextAppearance.HMPlayerBody1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:background="@drawable/sample_reaction_custom_bkg"
+                android:textSize="12sp"
+                android:textColor="#303234"
+                tools:visibility="visible"
+                tools:text="\uD83D\uDC4D 3" />
+
+            <io.hotmic.player.ui.ReactionView
+                android:id="@+id/reaction_sadness"
+                android:textAppearance="@style/TextAppearance.HMPlayerBody1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:background="@drawable/sample_reaction_custom_bkg"
+                android:textSize="12sp"
+                android:textColor="#303234"
+                tools:visibility="visible"
+                tools:text="\uD83D\uDC4D 1" />
+
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

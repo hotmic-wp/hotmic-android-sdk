@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProvider
 import io.hotmic.media_player_sample.MainActivity
 import io.hotmic.media_player_sample.R
@@ -62,6 +63,10 @@ class MainFragment : Fragment(), StreamItemAdapter.EventListener {
             }
             binding.rvStreamList.adapter = streamListAdapter
         })
+
+        binding.optionSettings.setOnClickListener {
+            SettingsFragment().show(parentFragmentManager, "setting_fragment")
+        }
     }
 
     override fun onResume() {
