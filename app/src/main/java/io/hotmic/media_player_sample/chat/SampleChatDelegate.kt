@@ -164,10 +164,7 @@ internal class SampleChatViewHolder(view: View) : RecyclerView.ViewHolder(view) 
         try {
             Glide.with(image.context).clear(image)
         }
-        catch(e: Exception) {
-            //Ignore it, Glide sometimes throws IllegalArgument if the underlying activity
-            // has got closed
-        }
+        catch(e: Exception) { }
     }
 
     companion object {

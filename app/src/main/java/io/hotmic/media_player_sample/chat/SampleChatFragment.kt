@@ -45,10 +45,6 @@ class SampleChatFragment: Fragment(), ChatDelegatesListener {
         private const val FRAGMENT_TAG_CHAT_INTERACTION = "chat_interaction_fragment"
         private const val FRAGMENT_TAG_TIP = "tip_fragment"
         private const val FRAGMENT_EXPANDED_CHAT_TAG = "expanded_chat_fragment"
-
-        fun getInstance(): SampleChatFragment {
-            return SampleChatFragment()
-        }
     }
 
     private lateinit var chatListView: RecyclerView

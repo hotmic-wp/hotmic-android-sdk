@@ -6,10 +6,10 @@ dependencyResolutionManagement {
         maven { url 'https://jitpack.io' }
         maven {
             url "https://maven.pkg.github.com/hotmic-wp/android-sdk"
-            credentials {
-                username = "ksgangadharan"
-                password = "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"
-            }
+            /*credentials {
+                username = ""
+                password = ""
+            }*/
         }
     }
 }
