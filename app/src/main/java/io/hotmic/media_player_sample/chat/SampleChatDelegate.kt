@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import de.hdodenhof.circleimageview.CircleImageView
 import io.hotmic.media_player_sample.R
-import io.hotmic.media_player_sample.ui.toPx
+import io.hotmic.media_player_sample.util.toPx
 import io.hotmic.player.models.Chat
 import io.hotmic.player.models.ChatReaction
 import io.hotmic.player.ui.ReactionView

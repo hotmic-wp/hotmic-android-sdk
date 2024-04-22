@@ -8,6 +8,7 @@
     android:background="#FFF">
 
     <LinearLayout
+        android:id="@+id/api_key_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -16,11 +17,84 @@
         >
 
         <TextView
+            android:id="@+id/api_key_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Api Key"
+            android:textSize="18sp"
+            android:textColor="#1C1C1C"
+            android:layout_marginHorizontal="15dp"
+            />
+
+        <EditText
+            android:id="@+id/api_key_edit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="15dp"
+            android:paddingVertical="4dp"
+            android:paddingHorizontal="3dp"
+            android:layout_weight="1"
+            android:textSize="14sp"
+            android:singleLine="true"
+            android:background="@drawable/edit_bkg_1"
+            android:hint="Enter the api key"
+            android:textColorHint="#999"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/token_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@id/api_key_layout"
+        >
+
+        <TextView
+            android:id="@+id/token_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Token"
+            android:textSize="18sp"
+            android:textColor="#1C1C1C"
+            android:layout_marginHorizontal="15dp"
+            />
+
+        <EditText
+            android:id="@+id/token_edit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="15dp"
+            android:paddingVertical="4dp"
+            android:paddingHorizontal="3dp"
+            android:layout_weight="1"
+            android:textSize="14sp"
+            android:singleLine="true"
+            android:background="@drawable/edit_bkg_1"
+            android:hint="Enter the token"
+            android:textColorHint="#999"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/custom_chat_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@id/token_layout"
+        >
+
+        <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Use Custom Chat"
             android:layout_weight="1"
             android:textSize="18sp"
+            android:textColor="#1C1C1C"
             android:layout_marginHorizontal="15dp"
             />
 

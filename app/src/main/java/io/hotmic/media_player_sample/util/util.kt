@@ -1,4 +1,4 @@
-package io.hotmic.media_player_sample.ui
+package io.hotmic.media_player_sample.util
 
 import android.R
 import android.content.Context

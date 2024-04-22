@@ -1,6 +1,7 @@
 package io.hotmic.media_player_sample.chat
 
 import android.view.View
+import android.widget.TextView
 import androidx.annotation.LayoutRes
 import androidx.recyclerview.widget.RecyclerView
 import io.hotmic.media_player_sample.R
@@ -18,7 +19,7 @@ class SampleRecoDelegate() : PolyAdapter.BindingDelegate<SampleReco, SampleRecoV
     override fun createViewHolder(itemView: View) = SampleRecoViewHolder(itemView)
 
     override fun bindView(holder: SampleRecoViewHolder, item: SampleReco) {
-
+        holder.bindData(item)
     }
 
     override fun onRecycle(holder: SampleRecoViewHolder) {
@@ -27,7 +28,10 @@ class SampleRecoDelegate() : PolyAdapter.BindingDelegate<SampleReco, SampleRecoV
 }
 
 class SampleRecoViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-    fun bindData() {
+    private val recoTextView: TextView = view.findViewById(R.id.reco_text)
+
+    fun bindData(data: SampleReco) {
+        recoTextView.text = "Recommend\n${data.id}"
 
     }
 

@@ -6,7 +6,7 @@ import android.util.AttributeSet
 import androidx.core.content.res.ResourcesCompat
 import androidx.emoji.widget.EmojiTextView
 import io.hotmic.media_player_sample.R
-import io.hotmic.media_player_sample.ui.toPx
+import io.hotmic.media_player_sample.util.toPx
 import io.hotmic.player.models.ChatReaction
 
 internal class ReactionView : EmojiTextView {

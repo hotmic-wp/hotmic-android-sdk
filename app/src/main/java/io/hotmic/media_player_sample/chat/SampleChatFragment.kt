@@ -23,9 +23,9 @@ import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import io.hotmic.media_player_sample.R
-import io.hotmic.media_player_sample.ui.addTo
-import io.hotmic.media_player_sample.ui.getColorStateList
-import io.hotmic.media_player_sample.ui.toPx
+import io.hotmic.media_player_sample.util.addTo
+import io.hotmic.media_player_sample.util.getColorStateList
+import io.hotmic.media_player_sample.util.toPx
 import io.hotmic.player.models.Chat
 import io.hotmic.player.models.ChatReaction
 import io.hotmic.player.models.Tip
@@ -150,11 +150,13 @@ class SampleChatFragment: Fragment(), ChatDelegatesListener {
 
         optionSend.apply {
             isEnabled = false
-            setTextColor(getColorStateList(context,
+            setTextColor(
+                getColorStateList(context,
                 pressedColor = io.hotmic.player.R.color.hmp_tintPrimaryContrast,
                 enabledColor = io.hotmic.player.R.color.hmp_tintPrimary,
                 disabledColor = io.hotmic.player.R.color.hmp_tintDisabled
-            ))
+            )
+            )
             setOnClickListener { onSendMessageActionClicked() }
         }
 

@@ -10,7 +10,7 @@ import androidx.appcompat.content.res.AppCompatResources
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.graphics.toColorInt
 import io.hotmic.media_player_sample.R
-import io.hotmic.media_player_sample.ui.toPx
+import io.hotmic.media_player_sample.util.toPx
 import org.nibor.autolink.LinkExtractor
 import org.nibor.autolink.LinkType
 
