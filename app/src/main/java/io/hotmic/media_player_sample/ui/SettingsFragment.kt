@@ -17,6 +17,7 @@ import io.hotmic.media_player_sample.util.AppPreferences
 internal class SettingsFragment: BottomSheetDialogFragment() {
 
     private lateinit var toggleOptionChat: SwitchCompat
+    private lateinit var toggleOptionPlayer: SwitchCompat
     private lateinit var editApiKey: EditText
     private lateinit var editToken: EditText
 
@@ -34,6 +35,7 @@ internal class SettingsFragment: BottomSheetDialogFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         toggleOptionChat = view.findViewById(R.id.custom_chat_switch)
+        toggleOptionPlayer = view.findViewById(R.id.custom_player_switch)
         editApiKey = view.findViewById(R.id.api_key_edit)
         editToken = view.findViewById(R.id.token_edit)
 
@@ -41,6 +43,12 @@ internal class SettingsFragment: BottomSheetDialogFragment() {
         toggleOptionChat.setOnCheckedChangeListener { buttonView, isChecked ->
             Log.d(LOG_TAG, "Changed chat option, new: $isChecked")
             AppPreferences.setCustomChatEnabled(requireContext(), isChecked)
+        }
+
+        toggleOptionPlayer.isChecked = AppPreferences.isCustomPlayerEnabled(requireContext())
+        toggleOptionPlayer.setOnCheckedChangeListener { buttonView, isChecked ->
+            Log.d(LOG_TAG, "Changed custom player option, new: $isChecked")
+            AppPreferences.setCustomPlayerEnabled(requireContext(), isChecked)
         }
 
         editApiKey.setText(AppPreferences.getApiKey(requireContext()))

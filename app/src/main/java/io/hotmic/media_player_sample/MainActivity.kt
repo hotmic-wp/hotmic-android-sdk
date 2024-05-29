@@ -59,6 +59,7 @@ class MainActivity : AppCompatActivity() {
         showPlayerScreen()
         val builder = HotMicPlayer.Builder(this)
             .setStreamId(stream.id)
+            .useCustomPlayer(AppPreferences.isCustomPlayerEnabled(applicationContext))
             .setUICallback(playerCallback)
             .credential(AppPreferences.getApiKey(applicationContext))
 

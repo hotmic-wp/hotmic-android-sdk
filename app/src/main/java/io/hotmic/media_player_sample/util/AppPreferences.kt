@@ -8,6 +8,7 @@ object AppPreferences {
     private const val PREF_API_KEY = "API_KEY"
     private const val PREF_PLATFORM_TOKEN = "PLATFORM_TOKEN"
     private const val PREF_CUSTOM_CHAT_ENABLED = "CUSTOM_CHAT_ENABLED"
+    private const val PREF_CUSTOM_PLAYER_ENABLED = "CUSTOM_PLAYER_ENABLED"
 
     private fun getSharedPrefs(context: Context): SharedPreferences {
         return context.getSharedPreferences(PREF_FILE_NAME, Context.MODE_PRIVATE)
@@ -41,5 +42,15 @@ object AppPreferences {
     fun setCustomChatEnabled(context: Context, value: Boolean) {
         val sp = getSharedPrefs(context)
         sp.edit().putBoolean(PREF_CUSTOM_CHAT_ENABLED, value).apply()
+    }
+
+    fun isCustomPlayerEnabled(context: Context): Boolean {
+        val sp = getSharedPrefs(context)
+        return sp.getBoolean(PREF_CUSTOM_PLAYER_ENABLED, false)
+    }
+
+    fun setCustomPlayerEnabled(context: Context, value: Boolean) {
+        val sp = getSharedPrefs(context)
+        sp.edit().putBoolean(PREF_CUSTOM_PLAYER_ENABLED, value).apply()
     }
 }

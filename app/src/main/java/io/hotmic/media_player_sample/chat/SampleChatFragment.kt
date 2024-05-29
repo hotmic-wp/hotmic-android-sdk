@@ -26,11 +26,11 @@ import io.hotmic.media_player_sample.R
 import io.hotmic.media_player_sample.util.addTo
 import io.hotmic.media_player_sample.util.getColorStateList
 import io.hotmic.media_player_sample.util.toPx
+import io.hotmic.player.HotMicPlayer
 import io.hotmic.player.models.Chat
 import io.hotmic.player.models.ChatReaction
 import io.hotmic.player.models.Tip
 import io.hotmic.player.shared.HMChatViewModel
-import io.hotmic.player.shared.HotMicChatHandler
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -383,7 +383,7 @@ class SampleChatFragment: Fragment(), ChatDelegatesListener {
     }
 
     override fun onDelegateChatProfileClicked(userId: String) {
-        HotMicChatHandler.showProfilePanel(requireActivity(), userId = userId)
+        HotMicPlayer.showProfilePanel(requireActivity(), userId = userId)
     }
 
     private fun setChatStateObserver() {
@@ -563,12 +563,12 @@ class SampleChatFragment: Fragment(), ChatDelegatesListener {
     }
 
     private fun onOpenMembersPanel() {
-        HotMicChatHandler.showPeoplePanel(requireActivity())
+        HotMicPlayer.showPeoplePanel(requireActivity())
     }
 
     private fun onOpenPollsClicked() {
         Log.d(LOG_TAG, "On-open-polls-clicked")
-        HotMicChatHandler.showPollPanel(requireActivity(), source = "info")
+        HotMicPlayer.showPollPanel(requireActivity(), source = "info")
     }
 
     class RVVerticalDividerDecorator(spacingInDp: Int): RecyclerView.ItemDecoration() {

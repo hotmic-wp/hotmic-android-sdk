@@ -3,13 +3,14 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        //mavenLocal()
         maven { url 'https://jitpack.io' }
         maven {
             url "https://maven.pkg.github.com/hotmic-wp/android-sdk"
-            /*credentials {
+            credentials {
                 username = ""
                 password = ""
-            }*/
+            }
         }
     }
 }
