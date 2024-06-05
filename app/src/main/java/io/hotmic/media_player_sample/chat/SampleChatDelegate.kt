@@ -10,7 +10,7 @@ import io.hotmic.media_player_sample.R
 import io.hotmic.media_player_sample.util.toPx
 import io.hotmic.player.models.Chat
 import io.hotmic.player.models.ChatReaction
-import io.hotmic.player.ui.ReactionView
+import io.hotmic.player.ui.SampleReactionView
 import polyadapter.PolyAdapter
 import polyadapter.equalityItemCallback
 
@@ -58,11 +58,11 @@ internal class SampleChatDelegate(
 internal class SampleChatViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     private val chatView = view.findViewById<ChatTextView>(R.id.chat_text)
     private val image = view.findViewById<CircleImageView>(R.id.profile_image)
-    private val likeReaction = view.findViewById<ReactionView>(R.id.reaction_like)
-    private val fireReaction = view.findViewById<ReactionView>(R.id.reaction_fire)
-    private val laughReaction = view.findViewById<ReactionView>(R.id.reaction_laugh)
-    private val angerReaction = view.findViewById<ReactionView>(R.id.reaction_anger)
-    private val sadnessReaction = view.findViewById<ReactionView>(R.id.reaction_sadness)
+    private val likeReaction = view.findViewById<SampleReactionView>(R.id.reaction_like)
+    private val fireReaction = view.findViewById<SampleReactionView>(R.id.reaction_fire)
+    private val laughReaction = view.findViewById<SampleReactionView>(R.id.reaction_laugh)
+    private val angerReaction = view.findViewById<SampleReactionView>(R.id.reaction_anger)
+    private val sadnessReaction = view.findViewById<SampleReactionView>(R.id.reaction_sadness)
 
     fun bindChat(chat: Chat, imageClick: (View) -> Unit): List<ChatLink> {
         val isHost = false
@@ -121,7 +121,7 @@ internal class SampleChatViewHolder(view: View) : RecyclerView.ViewHolder(view) 
 
     private fun updateReactionView(
         reaction: ChatReaction,
-        reactionView: ReactionView,
+        reactionView: SampleReactionView,
         count: Int,
         reactions: Set<ChatReaction>
     ) {
@@ -139,7 +139,7 @@ internal class SampleChatViewHolder(view: View) : RecyclerView.ViewHolder(view) 
         sadnessReaction.setReactionClick(ChatReaction.SADNESS, listener)
     }
 
-    private fun ReactionView.setReactionClick(
+    private fun SampleReactionView.setReactionClick(
         reaction: ChatReaction,
         listener: (ChatReaction) -> Boolean
     ) {

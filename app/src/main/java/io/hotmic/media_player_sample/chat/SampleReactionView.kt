@@ -9,7 +9,7 @@ import io.hotmic.media_player_sample.R
 import io.hotmic.media_player_sample.util.toPx
 import io.hotmic.player.models.ChatReaction
 
-internal class ReactionView : EmojiTextView {
+class SampleReactionView : EmojiTextView {
 
     constructor(context: Context) : super(context) {
         init()

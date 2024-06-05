@@ -47,7 +47,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <io.hotmic.player.ui.ReactionView
+            <io.hotmic.player.ui.SampleReactionView
                 android:id="@+id/reaction_like"
                 android:textAppearance="@style/TextAppearance.HMPlayerBody1"
                 android:layout_width="wrap_content"
@@ -58,7 +58,7 @@
                 tools:visibility="visible"
                 tools:text="\uD83D\uDC4D 1" />
 
-            <io.hotmic.player.ui.ReactionView
+            <io.hotmic.player.ui.SampleReactionView
                 android:id="@+id/reaction_fire"
                 android:textAppearance="@style/TextAppearance.HMPlayerBody1"
                 android:layout_width="wrap_content"
@@ -69,7 +69,7 @@
                 tools:visibility="visible"
                 tools:text="\uD83D\uDC4D 2" />
 
-            <io.hotmic.player.ui.ReactionView
+            <io.hotmic.player.ui.SampleReactionView
                 android:id="@+id/reaction_laugh"
                 android:textAppearance="@style/TextAppearance.HMPlayerBody1"
                 android:layout_width="wrap_content"
@@ -81,7 +81,7 @@
                 tools:visibility="visible"
                 tools:text="\uD83D\uDC4D 2" />
 
-            <io.hotmic.player.ui.ReactionView
+            <io.hotmic.player.ui.SampleReactionView
                 android:id="@+id/reaction_anger"
                 android:textAppearance="@style/TextAppearance.HMPlayerBody1"
                 android:layout_width="wrap_content"
@@ -93,7 +93,7 @@
                 tools:visibility="visible"
                 tools:text="\uD83D\uDC4D 3" />
 
-            <io.hotmic.player.ui.ReactionView
+            <io.hotmic.player.ui.SampleReactionView
                 android:id="@+id/reaction_sadness"
                 android:textAppearance="@style/TextAppearance.HMPlayerBody1"
                 android:layout_width="wrap_content"
